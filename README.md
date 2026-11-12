@@ -1,11 +1,22 @@
 # Digital 7 — Contabilidade & Coworking Virtual
 
-**Sites publicados:**
-- Vercel (principal): https://digital7contabilidade-site.vercel.app
-- GitHub Pages (espelho): https://metaauge.github.io/digital7contabilidade-site/
+**Site no ar:** https://digital7contabilidade.com.br
+(`www.digital7contabilidade.com.br` redireciona 308 para o domínio principal)
 
 Landing page institucional da **Digital 7**, com a identidade visual da marca
 (logotipo como favicon) e três chamadas por segmento de atendimento.
+
+**Domínio/DNS:** registrado e gerenciado na Hostinger (`apollo/athena.dns-parking.com`).
+Registros apontando para a Vercel:
+
+```
+A      @     216.198.79.1
+A      @     64.29.17.1
+CNAME  www   beb7edd9b4baec28.vercel-dns-017.com
+```
+
+**Hospedagem:** Vercel (projeto `digital7contabilidade-site`), deploy automático a cada
+`git push` na `main`. Espelho em GitHub Pages: https://metaauge.github.io/digital7contabilidade-site/
 
 ## Estrutura
 
