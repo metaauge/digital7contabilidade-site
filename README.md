@@ -1,7 +1,9 @@
 # Digital 7 — Contabilidade & Coworking Virtual
 
-Site institucional (landing page) da **Digital 7**, com a identidade visual da marca e
-três chamadas por segmento de atendimento.
+**Site publicado:** https://metaauge.github.io/digital7contabilidade-site/
+
+Landing page institucional da **Digital 7**, com a identidade visual da marca
+(logotipo como favicon) e três chamadas por segmento de atendimento.
 
 ## Estrutura
 
