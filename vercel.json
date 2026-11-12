@@ -1,0 +1,17 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "rewrites": [
+    {
+      "source": "/medicos",
+      "destination": "https://digital7-medicos.vercel.app/"
+    },
+    {
+      "source": "/medicos/:path*",
+      "destination": "https://digital7-medicos.vercel.app/:path*"
+    },
+    {
+      "source": "/assets/:path*",
+      "destination": "https://digital7-medicos.vercel.app/assets/:path*"
+    }
+  ]
+}
