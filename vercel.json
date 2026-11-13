@@ -5,9 +5,30 @@
       "source": "/medicos/",
       "destination": "/medicos",
       "permanent": true
+    },
+    {
+      "source": "/mercado-digital/",
+      "destination": "/mercado-digital",
+      "permanent": true
     }
   ],
   "rewrites": [
+    {
+      "source": "/assets/images/:path*",
+      "destination": "https://digital7-mercado-digital.vercel.app/assets/images/:path*"
+    },
+    {
+      "source": "/assets/:path*",
+      "destination": "https://digital7-medicos.vercel.app/assets/:path*"
+    },
+    {
+      "source": "/css/:path*",
+      "destination": "https://digital7-mercado-digital.vercel.app/css/:path*"
+    },
+    {
+      "source": "/js/:path*",
+      "destination": "https://digital7-mercado-digital.vercel.app/js/:path*"
+    },
     {
       "source": "/medicos",
       "destination": "https://digital7-medicos.vercel.app/"
@@ -17,8 +38,12 @@
       "destination": "https://digital7-medicos.vercel.app/:path*"
     },
     {
-      "source": "/assets/:path*",
-      "destination": "https://digital7-medicos.vercel.app/assets/:path*"
+      "source": "/mercado-digital",
+      "destination": "https://digital7-mercado-digital.vercel.app/"
+    },
+    {
+      "source": "/mercado-digital/:path*",
+      "destination": "https://digital7-mercado-digital.vercel.app/:path*"
     }
   ]
 }
