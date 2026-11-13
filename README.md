@@ -49,6 +49,24 @@ O site é 100% estático e está publicado em dois lugares:
   com deploy automático a cada `git push` na branch `main`.
 - **GitHub Pages** (branch `main`, pasta raiz `/`).
 
+## Rotas
+
+| Rota | Conteúdo |
+|---|---|
+| `/` | Landing principal da Digital 7 (logo + 3 botões) |
+| `/medicos` | LP de Médicos, servida via `rewrites` do projeto Vercel `digital7-medicos` |
+
+Como funciona a integração (`vercel.json`):
+
+- `/medicos` → proxy para `https://digital7-medicos.vercel.app/` (URL do domínio é preservada)
+- `/medicos/*` → proxy para o mesmo projeto (assets da LP em caminho relativo)
+- `/assets/*` → proxy para o mesmo projeto (a LP referencia `/assets/images/...` dentro do CSS);
+  arquivos locais do site têm prioridade (ex.: `/assets/favicon-*.png`)
+- `/medicos/` → redirect 308 para `/medicos`
+
+> Para publicar mudanças na LP de Médicos, basta fazer deploy no projeto `digital7-medicos`
+> — este site continua apontando para o domínio de produção dele.
+
 ## Próximos passos
 
 Os três botões usam âncoras provisórias (`#mercado-digital`, `#medicos`, `#dentistas`).
