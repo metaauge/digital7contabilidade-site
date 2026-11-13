@@ -76,6 +76,19 @@ Como funciona a integração (`vercel.json` — proxy por `rewrites`, a URL do d
 - `/medicos/` e `/mercado-digital/` (com barra) → **308** para a versão sem barra, garantindo URL única
 - Para publicar mudanças em qualquer LP, basta fazer deploy no projeto Vercel correspondente
 
+## Repositórios das LPs
+
+| LP | Repositório | Projeto Vercel |
+|---|---|---|
+| Médicos | https://github.com/metaauge/digital7-medicos | `digital7-medicos` |
+| Mercado Digital | https://github.com/metaauge/digital7-mercado-digital | `digital7-mercado-digital` |
+| Dentistas | https://github.com/metaauge/digital7-dentistas | `digital7-dentistas` |
+
+Cada LP tem `canonical`, `og:url`, `og:image` (absolutos) apontando para o domínio
+`digital7contabilidade.com.br`, para não competir com as URLs `*.vercel.app` no Google
+e gerar bom preview no WhatsApp/redes sociais. Qualquer `git push` nesses repositórios
+dispara deploy automático no projeto Vercel correspondente.
+
 ## Próximos passos
 
 Os botões **Mercado Digital** (`/mercado-digital`) e **Médicos** (`/medicos`) já apontam para as LPs.
