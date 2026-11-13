@@ -10,6 +10,11 @@
       "source": "/mercado-digital/",
       "destination": "/mercado-digital",
       "permanent": true
+    },
+    {
+      "source": "/dentistas",
+      "destination": "/dentistas/",
+      "permanent": true
     }
   ],
   "rewrites": [
@@ -44,6 +49,14 @@
     {
       "source": "/mercado-digital/:path*",
       "destination": "https://digital7-mercado-digital.vercel.app/:path*"
+    },
+    {
+      "source": "/dentistas/",
+      "destination": "https://digital7-dentistas.vercel.app/"
+    },
+    {
+      "source": "/dentistas/:path*",
+      "destination": "https://digital7-dentistas.vercel.app/:path*"
     }
   ]
 }
