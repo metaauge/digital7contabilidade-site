@@ -54,21 +54,28 @@ O site é 100% estático e está publicado em dois lugares:
 | Rota | Conteúdo |
 |---|---|
 | `/` | Landing principal da Digital 7 (logo + 3 botões) |
-| `/medicos` | LP de Médicos, servida via `rewrites` do projeto Vercel `digital7-medicos` |
+| `/medicos` | LP de Médicos — projeto Vercel `digital7-medicos` |
+| `/mercado-digital` | LP de Mercado Digital — projeto Vercel `digital7-mercado-digital` |
+| `/dentistas` | ainda não integrada (botão em âncora `#dentistas`) |
 
-Como funciona a integração (`vercel.json`):
+Como funciona a integração (`vercel.json` — proxy por `rewrites`, a URL do domínio é preservada):
 
-- `/medicos` → proxy para `https://digital7-medicos.vercel.app/` (URL do domínio é preservada)
-- `/medicos/*` → proxy para o mesmo projeto (assets da LP em caminho relativo)
-- `/assets/*` → proxy para o mesmo projeto (a LP referencia `/assets/images/...` dentro do CSS);
-  arquivos locais do site têm prioridade (ex.: `/assets/favicon-*.png`)
-- `/medicos/` → redirect 308 para `/medicos`
+| Rota no domínio | Encaminha para | Por quê |
+|---|---|---|
+| `/medicos` | `digital7-medicos.vercel.app/` | página da LP |
+| `/medicos/*` | `digital7-medicos.vercel.app/*` | assets relativos da LP |
+| `/mercado-digital` | `digital7-mercado-digital.vercel.app/` | página da LP |
+| `/mercado-digital/*` | `digital7-mercado-digital.vercel.app/*` | assets relativos da LP |
+| `/assets/*` | `digital7-medicos.vercel.app/assets/*` | assets relativos de Médicos |
+| `/assets/images/*` | `digital7-mercado-digital.vercel.app/assets/images/*` | imagens de Mercado Digital (regra mais específica, avaliada antes) |
+| `/css/*`, `/js/*` | `digital7-mercado-digital.vercel.app/...` | CSS/JS de Mercado Digital |
 
-> Para publicar mudanças na LP de Médicos, basta fazer deploy no projeto `digital7-medicos`
-> — este site continua apontando para o domínio de produção dele.
+- Arquivos locais do site **têm prioridade** sobre os rewrites (ex.: `/assets/favicon-*.png`, `/assets/logotipo-digital-7.png`, `/favicon.ico`)
+- `/medicos/` e `/mercado-digital/` (com barra) → **308** para a versão sem barra, garantindo URL única
+- Para publicar mudanças em qualquer LP, basta fazer deploy no projeto Vercel correspondente
 
 ## Próximos passos
 
-Os três botões usam âncoras provisórias (`#mercado-digital`, `#medicos`, `#dentistas`).
-Quando as páginas/landing de cada segmento estiverem prontas, basta trocar o `href`
-de cada `.btn` no `index.html` (por exemplo `href="mercado-digital.html"`).
+Os botões **Mercado Digital** (`/mercado-digital`) e **Médicos** (`/medicos`) já apontam para as LPs.
+Falta o botão **Dentistas**, que continua como âncora provisória (`#dentistas`) até a LP ser publicada
+em um projeto Vercel — aí é só adicionar as regras no `vercel.json` no mesmo padrão.
