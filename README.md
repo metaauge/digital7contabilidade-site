@@ -89,6 +89,23 @@ Cada LP tem `canonical`, `og:url`, `og:image` (absolutos) apontando para o domí
 e gerar bom preview no WhatsApp/redes sociais. Qualquer `git push` nesses repositórios
 dispara deploy automático no projeto Vercel correspondente.
 
+## Cache e publicação (importante)
+
+As LPs são servidas em produção pelo Vercel com `Cache-Control: immutable` (1 ano) nos assets.
+Como o domínio principal faz **proxy** dessas LPs, isso já causou um problema: o CSS antigo
+ficou preso no cache da borda e a imagem de fundo de uma seção não aparecia.
+
+Duas proteções estão ativas agora:
+
+1. **Headers no `vercel.json`**: todo caminho servido por proxy (`/medicos/*`, `/mercado-digital/*`,
+   `/dentistas/*`, `/assets/*`, `/css/*`, `/js/*`) responde com
+   `Cache-Control: public, max-age=0, must-revalidate` — mudanças aparecem na hora.
+2. **CSS versionado nas LPs**: os `<link>` usam `?v=2` (ex.: `assets/css/base.css?v=2`).
+   Se você editar CSS/JS de uma LP e o navegador de alguém continuar com a versão antiga,
+   basta subir o número (`?v=3`) no `index.html` daquela LP.
+
+> Dica: as LPs já versionam também as imagens do hero (`hero-desktop-v2.png`), pelo mesmo motivo.
+
 ## Próximos passos
 
 Os botões **Mercado Digital** (`/mercado-digital`) e **Médicos** (`/medicos`) já apontam para as LPs.
