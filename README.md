@@ -56,7 +56,7 @@ O site é 100% estático e está publicado em dois lugares:
 | `/` | Landing principal da Digital 7 (logo + 3 botões) |
 | `/medicos` | LP de Médicos — projeto Vercel `digital7-medicos` |
 | `/mercado-digital` | LP de Mercado Digital — projeto Vercel `digital7-mercado-digital` |
-| `/dentistas` | ainda não integrada (botão em âncora `#dentistas`) |
+| `/dentistas` | LP de Dentistas — projeto Vercel `digital7-dentistas` (zona com prefixo `/dentistas/`) |
 
 Como funciona a integração (`vercel.json` — proxy por `rewrites`, a URL do domínio é preservada):
 
@@ -64,6 +64,8 @@ Como funciona a integração (`vercel.json` — proxy por `rewrites`, a URL do d
 |---|---|---|
 | `/medicos` | `digital7-medicos.vercel.app/` | página da LP |
 | `/medicos/*` | `digital7-medicos.vercel.app/*` | assets relativos da LP |
+| `/dentistas/` | `digital7-dentistas.vercel.app/` | página da LP (zona isolada por prefixo) |
+| `/dentistas/*` | `digital7-dentistas.vercel.app/*` | assets relativos da LP |
 | `/mercado-digital` | `digital7-mercado-digital.vercel.app/` | página da LP |
 | `/mercado-digital/*` | `digital7-mercado-digital.vercel.app/*` | assets relativos da LP |
 | `/assets/*` | `digital7-medicos.vercel.app/assets/*` | assets relativos de Médicos |
